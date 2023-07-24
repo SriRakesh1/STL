@@ -1,0 +1,41 @@
+#include <iostream>
+#include<set> //Include set
+#include<algorithm>
+
+using namespace std;
+
+int main()
+{
+    set<int> numbers;//Declare a set
+    int element;
+    size_t n; //Set size of the set
+    cout<<"Enter size of set : ";
+    cin>>n;
+    cout<<endl<<"Enter the set elements "<<endl;
+    
+    for(size_t i=0;i<n;i++)
+    {
+        cin>>element; //Getting input from user
+        numbers.insert(element);
+    }
+    set<int> uniq; //Declare another set
+    int start,last;
+
+    cout<<"Enter start range and end range"<<endl;
+    cin>>start>>last;
+    
+    for (auto num : numbers) {
+            //Check is the number is inside the range
+        if(num>=start && num<=last)
+        {
+            uniq.insert(num);
+            cout<<num<<" ";
+        }
+    }
+    
+    if(!uniq.empty())
+        cout<<endl<<"The Total number of unique elements presents in the range "<<start<<" to " <<last<<" are "<<uniq.size();
+    else
+        cout<<"Elements not found";
+    return 0;
+}
