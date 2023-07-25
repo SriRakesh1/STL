@@ -1,0 +1,40 @@
+#include <iostream>
+#include<vector> //Add vector & algorithm header files
+#include<algorithm>
+
+/*Implement a generic function in C++ that takes a container of integers and returns the median value using the STL algorithms.*/
+
+using namespace std;
+
+//Use template to get any type of containers like vector,list,set...etc
+template <typename Container>
+
+
+typename Container::value_type getMedian(Container numbers)
+{
+    sort(numbers.begin(),numbers.end());//Sort the given elements
+    int size=numbers.size();//Get the size of the element
+    int mid=size/2;// Get mid position from size
+
+    if(mid%2==0)//check if the size is even then return the the element that position
+    {
+        return numbers[mid];
+    }
+    else//else find the median value for the middle 2 elements
+    {
+        return (numbers[mid-1]+numbers[mid])/2;
+    }
+}
+
+//Main function
+int main()
+{
+    //Here user can give any type of container and value_type
+    vector<int> num{4,9,2,6,1};
+    int medianValue=getMedian(num); //Calling getMedian function()
+
+    //This will give 5 as output after sorting 5 will be the middle element
+    cout <<"The median value is : "<<medianValue<<endl;
+
+    return 0;
+}
